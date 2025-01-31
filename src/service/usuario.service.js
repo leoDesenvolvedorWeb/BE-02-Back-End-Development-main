@@ -91,6 +91,17 @@ const removeUserFavProductService = (id,produto) => {
     );
 }
 
+const produtoFav = {
+    _id: produto._id || new ObjectId(), // Gera um ID se estiver null
+    nome: produto.nome
+};
+  
+  await db.collection('usuarios').updateOne(
+    { _id: usuarioId },
+    { $addToSet: { produtos_fav: produtoFav } }
+);
+
+
 module.exports = {
     findUserByIdService,
     findAllUsersService,
