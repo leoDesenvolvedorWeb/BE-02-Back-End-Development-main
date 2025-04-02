@@ -91,15 +91,22 @@ const removeUserFavProductService = (id,produto) => {
     );
 }
 
-const produtoFav = {
+async function Minhafuncao(produto) {
+    const produtoFav = {
     _id: produto._id || new ObjectId(), // Gera um ID se estiver null
     nome: produto.nome
 };
-  
+
+}
+async function AtualizarUsuario() {
   await db.collection('usuarios').updateOne(
     { _id: usuarioId },
     { $addToSet: { produtos_fav: produtoFav } }
 );
+
+}
+
+
 
 
 module.exports = {
